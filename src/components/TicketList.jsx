@@ -1,5 +1,6 @@
 import React from "react";
 import Ticket from "./Ticket";
+import TicketHeader from "./TicketHeader";
 
 
 var masterTicketList = [
@@ -19,15 +20,29 @@ var masterTicketList = [
         issue: 'Donkey picture not displaying on hover in Zoology app. :('
     }
 ];
+
+
+
 function TicketList() {
+    var getStyle = () => {
+        return {
+            color: "lightgrey",
+            background: "black"
+
+        }
+    }
     return (
-        <div>
+        <div style={getStyle()}>
             <hr />
             {masterTicketList.map((ticket, index) =>
-                <Ticket names={ticket.names}
-                    location={ticket.location}
-                    issue={ticket.issue}
-                    key={index} />
+                [
+                    <TicketHeader location={ticket.location} />,
+                    <Ticket names={ticket.names}
+
+                        issue={ticket.issue}
+                        key={index} />
+
+                ]
             )}
         </div>
     );
