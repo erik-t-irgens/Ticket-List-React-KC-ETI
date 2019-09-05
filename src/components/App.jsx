@@ -1,23 +1,20 @@
-
-import React from "react";
-import Header from "./Header";
-import TicketList from "./TicketList";
-import Nav from "./Nav";
-import Search from "./AutoComplete";
-import AutoCompleteText from "./AutoComplete";
-
+import React from 'react';
+import Header from './Header';
+import TicketList from './TicketList';
+import { Switch, Route } from 'react-router-dom';
+import NewTicketControl from './NewTicketControl';
 function App() {
     return (
         <div>
-            <AutoCompleteText />
-            <Nav />
             <Header />
-            <TicketList />
-
-
-
+            <Switch>
+                <Route exact path='/' component={TicketList} />
+                <Route path='/newticket' component={NewTicketControl} />
+            </Switch>
         </div>
     );
 }
 
 export default App;
+
+/// State can only affect components below the component that owns that state.
